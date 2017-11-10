@@ -13,7 +13,7 @@ const mongo = require('mongodb');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
 //connecting to a local database name loginapp
-mongoose.connect('mongodb://localhost:27017/loginapp');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/loginapp');
 var db = mongoose.connection;
 //creating routes
 var routes = require('./routes/index');
@@ -88,7 +88,7 @@ app.listen(port, () => {
     console.log(`Started on port: ${port}`);
 });
 
-//module.exports = app;
+module.exports = app;
 
 
 
